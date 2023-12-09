@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Binary to String Converter</title>
+</head>
+<body>
+  <input type="text" id="binaryInput" placeholder="Enter binary value">
+  <button onclick="convertBinaryToString()">Convert</button>
+  <p>Converted String: <span id="result"></span></p>
+
+  <script>
+    function convertBinaryToString() {
+      const binaryInput = document.getElementById('binaryInput').value;
+      const binaryArray = binaryInput.match(/[01]{8}/g); // Split binary into 8-bit chunks
+
+      if (binaryArray) {
+        const string = binaryArray.map(binary => String.fromCharCode(parseInt(binary, 2))).join('');
+        document.getElementById('result').textContent = string;
+      } else {
+        document.getElementById('result').textContent = "Invalid binary input";
+      }
+    }
+  </script>
+</body>
+</html>
